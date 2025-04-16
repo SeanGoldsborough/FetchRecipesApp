@@ -16,24 +16,29 @@ class RecipesListViewModel: ObservableObject {
     @Published var enableDebugHappyPath = true
     @Published var enableDebugMisformed = false
     @Published var enableDebugEmpty = false
+    @Published var showError = false
     
     private var store: [AnyCancellable] = []
     
     public func loadData(url: String) {
-        print(s is \(url)")
         Task(priority: .high){
             do {
                 let recipes = try await self.networkManager.getData(with: url)
                 performUpdatesOnMain {
-                    self.recipes = recipes.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" }
-                    print("Fetched \(recipes.count) recipes.")
+                    if recipes.isEmpty {
+                        self.showError = true
+                        self.recipes = recipes.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" }
+                    } else {
+                        self.showError = false
+                        self.recipes = recipes.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" }
+                    }
                 }
             } catch {
-                print("Fetching images failed with error \(error)")
+                showError = true
             }
         }
     }
-    
+            
     init() {
         
         loadData(url: NetworkManager.Constants.URL.APIHappyPath)
@@ -64,25 +69,13 @@ class RecipesListViewModel: ObservableObject {
                 self.loadData(url: NetworkManager.Constants.URL.APIEmptyPath)
             })
             .store(in: &store)
-        
     }
+}
+
+extension RecipesListViewModel {
     
-//    public func loadJSON() -> [Recipe] {
-//        self.recipes = networkManager.loadJson()?.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" } ?? []
-//        return recipes
-//    }
-//    
-//    public func loadJsonMisformed() -> [Recipe] {
-//        self.recipes = networkManager.loadJsonMisformed()?.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" } ?? []
-//        for recipe in recipes {
-//            print(recipe)
-//        }
-//        return recipes
-//    }
-//    
-//    public func loadJsonEmpty() -> [Recipe] {
-//        self.recipes = networkManager.loadJsonEmpty()?.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" } ?? []
-//        return recipes
-//    }
-    
+    public func loadJSON(fileName: String) -> [Recipe] {
+        self.recipes = networkManager.loadJson(fileName: fileName)?.sorted { $0.cuisine ?? "" < $1.cuisine ?? "" } ?? []
+        return recipes
+    }
 }

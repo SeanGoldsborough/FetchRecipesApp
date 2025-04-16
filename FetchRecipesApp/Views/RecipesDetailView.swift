@@ -23,8 +23,3 @@ struct RecipesDetailView: View {
         .background(.yellow.opacity(0.5))
     }
 }
-
-//#Preview {
-//    let recipe = FoodItem()
-//    RecipesDetailView(recipe: recipe)
-//}

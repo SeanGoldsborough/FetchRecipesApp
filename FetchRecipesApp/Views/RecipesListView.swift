@@ -8,18 +8,9 @@
 import SwiftUI
 import SwiftData
 
-struct NewItem: Identifiable {
-    let id = UUID()
-    let name: String
-}
-
 struct RecipesListView: View {
     
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-    
-    let recipes = Bundle.main.path(forResource: "recipies", ofType: "json")
-    
+    @Environment(\.modelContext) private var modelContext        
     @ObservedObject var networkManager = NetworkManager.shared
     @ObservedObject var recipesListViewModel = RecipesListViewModel()
     
@@ -71,40 +62,17 @@ struct RecipesListView: View {
                 .background(.yellow.opacity(0.5))
                 .scrollContentBackground(.hidden)
                 .listRowSpacing(8.0)
+                .alert("Error: " + CustomError.invalidResponse.rawValue, isPresented: $recipesListViewModel.showError) {
+                    Button("Retry", role: .cancel) {
+                        recipesListViewModel.loadData(url: NetworkManager.Constants.URL.APIHappyPath)
+                    }
+                }
+                
             }
             .padding(0)
         }
     }
 }
-
-//@ViewBuilder
-//func HeaderView() -> some View {
-//    HStack {
-//        Image("FoodIcon")
-//            .resizable()
-//            .frame(width: 48, height: 48)
-//            .clipShape(.rect(cornerRadius: 25))
-//
-//        Text("FoodieApp")
-//            .font(.largeTitle)
-//            .fontWeight(.light)
-//            .multilineTextAlignment(.center)
-//
-//        Spacer()
-//
-//        Button(action: {
-//            showDebugView.toggle()
-//        }) {
-//            Image(systemName: "gearshape.fill")
-//                .resizable()
-//                .frame(width: 32, height: 32)
-//                .padding(.trailing)
-//        }
-//
-//    }
-//    .padding(8)
-//    //.background(.yellow)
-//}
 
 #Preview {
     RecipesListView()

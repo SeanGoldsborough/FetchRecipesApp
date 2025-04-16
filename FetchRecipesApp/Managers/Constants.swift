@@ -17,14 +17,22 @@
 */
 
 import Foundation
+
 extension NetworkManager {
+    
     struct Constants {
         struct URL {
             static let APIScheme = "https"
             static let APIHost = "d3jbb8n5wk0qxi.cloudfront.net"
             static let APIHappyPath = "/recipes.json"
-            static let APIMalformedPath = "recipes-malformed.json"
-            static let APIEmptyPath = "recipes-empty.json"
+            static let APIMalformedPath = "/recipes-malformed.json"
+            static let APIEmptyPath = "/recipes-empty.json"
+        }
+        
+        struct JSON {
+            static let happyPath = "recipies"
+            static let malformed = "recipiesMalformed"
+            static let empty = "recipiesEmpty"
         }
     }
 }

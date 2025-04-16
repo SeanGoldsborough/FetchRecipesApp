@@ -10,8 +10,8 @@ import UIKit
 import SwiftUI
 
 let cachedImages = NSCache<NSString, UIImage>()
+
 extension UIImageView {
-//extension Image {
     
     func loadImageUsingCacheWithUrlString(urlString:String) {
         self.image = nil

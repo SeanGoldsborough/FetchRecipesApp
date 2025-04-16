@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41131B912DB043FD00232332 /* CuisineFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41131B902DB043FD00232332 /* CuisineFlags.swift */; };
 		415AA3BC2DAD986C00C4824F /* FetchRecipesAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BB2DAD986C00C4824F /* FetchRecipesAppApp.swift */; };
 		415AA3BE2DAD986C00C4824F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BD2DAD986C00C4824F /* ContentView.swift */; };
 		415AA3C02DAD986C00C4824F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BF2DAD986C00C4824F /* Item.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41131B902DB043FD00232332 /* CuisineFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineFlags.swift; sourceTree = "<group>"; };
 		415AA3B82DAD986C00C4824F /* FetchRecipesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRecipesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415AA3BB2DAD986C00C4824F /* FetchRecipesAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRecipesAppApp.swift; sourceTree = "<group>"; };
 		415AA3BD2DAD986C00C4824F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				415AA40E2DAE1B8E00C4824F /* ImageCache.swift */,
 				415AA4102DAE1D2400C4824F /* ImageCacheManager.swift */,
 				415AA4122DAE1D4400C4824F /* ImageFetcher.swift */,
+				41131B902DB043FD00232332 /* CuisineFlags.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				415AA3E82DADA13B00C4824F /* RecipesListView.swift in Sources */,
 				415AA40F2DAE1B8E00C4824F /* ImageCache.swift in Sources */,
 				415AA3BC2DAD986C00C4824F /* FetchRecipesAppApp.swift in Sources */,
+				41131B912DB043FD00232332 /* CuisineFlags.swift in Sources */,
 				415AA4112DAE1D2400C4824F /* ImageCacheManager.swift in Sources */,
 				415AA40D2DADF0B700C4824F /* ErrorMessages.swift in Sources */,
 				415AA4042DADE85300C4824F /* Constants.swift in Sources */,

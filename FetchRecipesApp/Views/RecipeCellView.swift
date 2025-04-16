@@ -13,6 +13,7 @@ struct RecipeCellView: View {
     var body: some View {
         VStack {
             HStack {
+                // TODO: change to image
                 AsyncImage(url: URL(string: image)) { image in
                     image.resizable()
                 } placeholder: {
@@ -23,7 +24,6 @@ struct RecipeCellView: View {
                 .frame(width: 128, height: 128)
                 .cornerRadius(25)
                 .padding(1.5)
-                //.background(.black)
                 .cornerRadius(25)
                 .shadow(radius: 10)
                                 

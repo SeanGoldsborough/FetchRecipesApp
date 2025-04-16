@@ -14,6 +14,8 @@ struct DebugView: View {
     @State private var enableDebugMisformed = false
     @State private var enableDebugEmpty = false
     
+    var networkManager = NetworkManager.shared
+    
     var body: some View {
         NavigationView {
             VStack {

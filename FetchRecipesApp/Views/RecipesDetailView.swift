@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct RecipesDetailView: View {
+    
+    @Environment(\.openURL) var openURL
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var recipe: Recipe
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center, content: {
+            RecipesCardView(recipe: recipe)
+                .padding(.horizontal)
+            
+        })
+        .background(.yellow.opacity(0.5))
     }
 }
 
-#Preview {
-    RecipesDetailView()
-}
+//#Preview {
+//    let recipe = FoodItem()
+//    RecipesDetailView(recipe: recipe)
+//}

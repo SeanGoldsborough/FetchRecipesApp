@@ -25,7 +25,7 @@ struct FetchRecipesAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipesListView()
         }
         .modelContainer(sharedModelContainer)
     }

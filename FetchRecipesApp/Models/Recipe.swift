@@ -1,7 +1,8 @@
 
 import Foundation
-struct Recipe : Codable {
-	let cuisine : String?
+struct Recipe : Codable, Identifiable {
+    var id = UUID()
+    let cuisine : String?
 	let name : String?
 	let photo_url_large : String?
 	let photo_url_small : String?

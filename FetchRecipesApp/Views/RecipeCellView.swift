@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct RecipeCellView: View {
+    var name: String
+    var image: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                AsyncImage(url: URL(string: image)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                          .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                          .scaleEffect(2.0, anchor: .center)
+                }
+                .frame(width: 128, height: 128)
+                .cornerRadius(25)
+                .padding(1.5)
+                //.background(.black)
+                .cornerRadius(25)
+                .shadow(radius: 10)
+                                
+                Text(name)
+                    .font(.headline)
+                    .fontDesign(.serif)
+                    .padding(.leading, 8)
+                
+                Spacer()
+            }
+        }
+        .padding(0)
     }
-}
-
-#Preview {
-    RecipeCellView()
 }

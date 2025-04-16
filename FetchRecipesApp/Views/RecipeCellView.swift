@@ -13,19 +13,34 @@ struct RecipeCellView: View {
     var body: some View {
         VStack {
             HStack {
-                // TODO: change to image
-                AsyncImage(url: URL(string: image)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                          .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                          .scaleEffect(2.0, anchor: .center)
+                CachedImage(url: image) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 100, height: 100)
+                        
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 128, height: 128)
+                            .cornerRadius(25)
+                            .padding(1.5)
+                            .cornerRadius(25)
+                            .shadow(radius: 10)
+                        
+                    case .failure(let error):
+                        Image(systemName: "xmark")
+                            .symbolVariant(.circle.fill)
+                            .foregroundStyle(.red)
+                            .frame(width: 100, height: 100)
+                            .background(.black, in: RoundedRectangle(cornerRadius: 8,
+                                                                     style: .continuous))
+                    @unknown default:
+                        EmptyView()
+                    }
+                    
                 }
-                .frame(width: 128, height: 128)
-                .cornerRadius(25)
-                .padding(1.5)
-                .cornerRadius(25)
-                .shadow(radius: 10)
                                 
                 Text(name)
                     .font(.headline)

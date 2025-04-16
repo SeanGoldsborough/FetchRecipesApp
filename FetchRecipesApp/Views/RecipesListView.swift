@@ -16,6 +16,8 @@ struct RecipesListView: View {
     
     @State private var showDebugView: Bool = false
     
+    @State var flag = ""
+    
     var body: some View {
         GeometryReader { geometry in
             
@@ -50,8 +52,10 @@ struct RecipesListView: View {
                 }
                 
                 List(recipesListViewModel.recipes) { recipe in
+                    
+                    // MARK: check to see if we have name, if not, we don't display recipe cell.
                     if recipe.name != nil {
-                        Section(header: Text("\(recipe.cuisine ?? "")")) {
+                        Section(header: Text("\(recipe.cuisine?.cuisineFlag(cuisineName: recipe.cuisine) ?? "")" + " \(recipe.cuisine ?? "")")) {
                             NavigationLink(destination: RecipesDetailView(recipe: recipe)) {
                                 RecipeCellView(name: recipe.name ?? "", image: recipe.photo_url_small ?? "")
                                     .padding(0)

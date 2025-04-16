@@ -17,6 +17,7 @@ class RecipesListViewModel: ObservableObject {
     @Published var enableDebugMisformed = false
     @Published var enableDebugEmpty = false
     @Published var showError = false
+    @Published var flag = ""
     
     private var store: [AnyCancellable] = []
     

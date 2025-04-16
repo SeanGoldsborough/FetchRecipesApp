@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		41131B912DB043FD00232332 /* CuisineFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41131B902DB043FD00232332 /* CuisineFlags.swift */; };
+		41131B932DB0549400232332 /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41131B922DB0549400232332 /* CachedImage.swift */; };
+		41131B962DB06AE300232332 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41131B952DB06AE300232332 /* String+Ext.swift */; };
 		415AA3BC2DAD986C00C4824F /* FetchRecipesAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BB2DAD986C00C4824F /* FetchRecipesAppApp.swift */; };
 		415AA3BE2DAD986C00C4824F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BD2DAD986C00C4824F /* ContentView.swift */; };
 		415AA3C02DAD986C00C4824F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3BF2DAD986C00C4824F /* Item.swift */; };
@@ -28,7 +30,6 @@
 		415AA4002DADDBF000C4824F /* RecipesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA3FF2DADDBF000C4824F /* RecipesCardView.swift */; };
 		415AA4022DADE83C00C4824F /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA4012DADE83C00C4824F /* URLBuilder.swift */; };
 		415AA4042DADE85300C4824F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA4032DADE85300C4824F /* Constants.swift */; };
-		415AA4092DADF07600C4824F /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA4082DADF07600C4824F /* UIImageView+Ext.swift */; };
 		415AA40B2DADF09D00C4824F /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA40A2DADF09D00C4824F /* GCD.swift */; };
 		415AA40D2DADF0B700C4824F /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA40C2DADF0B700C4824F /* ErrorMessages.swift */; };
 		415AA40F2DAE1B8E00C4824F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AA40E2DAE1B8E00C4824F /* ImageCache.swift */; };
@@ -58,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		41131B902DB043FD00232332 /* CuisineFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineFlags.swift; sourceTree = "<group>"; };
+		41131B922DB0549400232332 /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
+		41131B952DB06AE300232332 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		415AA3B82DAD986C00C4824F /* FetchRecipesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRecipesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415AA3BB2DAD986C00C4824F /* FetchRecipesAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRecipesAppApp.swift; sourceTree = "<group>"; };
 		415AA3BD2DAD986C00C4824F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		415AA3FF2DADDBF000C4824F /* RecipesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCardView.swift; sourceTree = "<group>"; };
 		415AA4012DADE83C00C4824F /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		415AA4032DADE85300C4824F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		415AA4082DADF07600C4824F /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		415AA40A2DADF09D00C4824F /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		415AA40C2DADF0B700C4824F /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		415AA40E2DAE1B8E00C4824F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -117,6 +119,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41131B942DB05DF500232332 /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				415AA3FB2DADB5FD00C4824F /* recipies.json */,
+				415AA4162DAF0A9100C4824F /* recipiesMalformed.json */,
+				415AA41A2DAF0ACF00C4824F /* recipiesEmpty.json */,
+			);
+			path = "Mock Data";
+			sourceTree = "<group>";
+		};
 		415AA3AF2DAD986B00C4824F = {
 			isa = PBXGroup;
 			children = (
@@ -140,16 +152,14 @@
 		415AA3BA2DAD986C00C4824F /* FetchRecipesApp */ = {
 			isa = PBXGroup;
 			children = (
+				415AA4062DADE9C600C4824F /* App */,
 				415AA3F52DADA36700C4824F /* Views */,
 				415AA3F62DADA37000C4824F /* ViewModels */,
 				415AA3F72DADA38500C4824F /* Models */,
-				415AA3F82DADA38B00C4824F /* Managers */,
+				415AA3F82DADA38B00C4824F /* Networking */,
 				415AA4072DADF05A00C4824F /* Extensions */,
 				415AA4052DADE9B800C4824F /* Utilities */,
-				415AA4062DADE9C600C4824F /* Support */,
-				415AA3FB2DADB5FD00C4824F /* recipies.json */,
-				415AA4162DAF0A9100C4824F /* recipiesMalformed.json */,
-				415AA41A2DAF0ACF00C4824F /* recipiesEmpty.json */,
+				41131B942DB05DF500232332 /* Mock Data */,
 				415AA3C32DAD987300C4824F /* Preview Content */,
 			);
 			path = FetchRecipesApp;
@@ -189,6 +199,7 @@
 				415AA3ED2DADA17D00C4824F /* RecipesDetailView.swift */,
 				415AA3FF2DADDBF000C4824F /* RecipesCardView.swift */,
 				415AA4142DAECD3400C4824F /* DebugView.swift */,
+				41131B922DB0549400232332 /* CachedImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,14 +223,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		415AA3F82DADA38B00C4824F /* Managers */ = {
+		415AA3F82DADA38B00C4824F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				415AA3EF2DADA19000C4824F /* NetworkManager.swift */,
 				415AA4032DADE85300C4824F /* Constants.swift */,
 				415AA4012DADE83C00C4824F /* URLBuilder.swift */,
 			);
-			path = Managers;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		415AA4052DADE9B800C4824F /* Utilities */ = {
@@ -235,19 +246,19 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		415AA4062DADE9C600C4824F /* Support */ = {
+		415AA4062DADE9C600C4824F /* App */ = {
 			isa = PBXGroup;
 			children = (
 				415AA3BB2DAD986C00C4824F /* FetchRecipesAppApp.swift */,
 				415AA3C12DAD987300C4824F /* Assets.xcassets */,
 			);
-			path = Support;
+			path = App;
 			sourceTree = "<group>";
 		};
 		415AA4072DADF05A00C4824F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				415AA4082DADF07600C4824F /* UIImageView+Ext.swift */,
+				41131B952DB06AE300232332 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -392,8 +403,8 @@
 				415AA4002DADDBF000C4824F /* RecipesCardView.swift in Sources */,
 				415AA3EA2DADA15700C4824F /* RecipesListViewModel.swift in Sources */,
 				415AA4022DADE83C00C4824F /* URLBuilder.swift in Sources */,
+				41131B962DB06AE300232332 /* String+Ext.swift in Sources */,
 				415AA3F42DADA31B00C4824F /* Recipes.swift in Sources */,
-				415AA4092DADF07600C4824F /* UIImageView+Ext.swift in Sources */,
 				415AA3EC2DADA16900C4824F /* RecipesDetailViewModel.swift in Sources */,
 				415AA4132DAE1D4400C4824F /* ImageFetcher.swift in Sources */,
 				415AA3F02DADA19000C4824F /* NetworkManager.swift in Sources */,
@@ -401,6 +412,7 @@
 				415AA3E82DADA13B00C4824F /* RecipesListView.swift in Sources */,
 				415AA40F2DAE1B8E00C4824F /* ImageCache.swift in Sources */,
 				415AA3BC2DAD986C00C4824F /* FetchRecipesAppApp.swift in Sources */,
+				41131B932DB0549400232332 /* CachedImage.swift in Sources */,
 				41131B912DB043FD00232332 /* CuisineFlags.swift in Sources */,
 				415AA4112DAE1D2400C4824F /* ImageCacheManager.swift in Sources */,
 				415AA40D2DADF0B700C4824F /* ErrorMessages.swift in Sources */,

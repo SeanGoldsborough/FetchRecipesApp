@@ -15,9 +15,7 @@ struct RecipesListView: View {
     @ObservedObject var recipesListViewModel = RecipesListViewModel()
     
     @State private var showDebugView: Bool = false
-    
-    @State var flag = ""
-    
+
     var body: some View {
         GeometryReader { geometry in
             

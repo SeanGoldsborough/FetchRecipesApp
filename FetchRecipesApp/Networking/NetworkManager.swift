@@ -38,11 +38,11 @@ extension NetworkManager {
                 let jsonData = try decoder.decode(Recipes.self, from: data)
                 if let recipeData = jsonData.recipes {
                     self.recipes = recipeData
-                    //print("Last Recipe: \(self.recipes.last)")
                 }
                 return jsonData.recipes
             } catch {
                 print("error:\(error)")
+                return nil
             }
         }
         return nil

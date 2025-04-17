@@ -58,7 +58,7 @@ struct RecipesCardView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: geometry.size.width, height: geometry.size.height / 2)
                             
-                        case .failure(let error):
+                        case .failure(_):
                             Image(systemName: "xmark")
                                 .symbolVariant(.circle.fill)
                                 .foregroundStyle(.red)

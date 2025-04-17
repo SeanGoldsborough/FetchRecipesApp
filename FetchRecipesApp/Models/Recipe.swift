@@ -1,6 +1,14 @@
 
 import Foundation
-struct Recipe : Codable, Identifiable {
+struct Recipe : Codable, Identifiable, Comparable, Hashable {
+    static func < (lhs: Recipe, rhs: Recipe) -> Bool {
+        if let left = lhs.name, let right = rhs.name {
+            return left < right
+        } else {
+            return false
+        }
+    }
+    
     var id = UUID()
     let cuisine : String?
 	let name : String?

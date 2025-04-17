@@ -29,7 +29,7 @@ struct RecipeCellView: View {
                             .cornerRadius(25)
                             .shadow(radius: 10)
                         
-                    case .failure(let error):
+                    case .failure(_):
                         Image(systemName: "xmark")
                             .symbolVariant(.circle.fill)
                             .foregroundStyle(.red)

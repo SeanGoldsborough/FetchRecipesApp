@@ -118,6 +118,7 @@ struct RecipesCardView: View {
             .padding(.trailing, 32.0)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: backButton)
+            .shadow(radius: 10)
         }
     }
 }

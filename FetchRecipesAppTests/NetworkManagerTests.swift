@@ -6,30 +6,59 @@
 //
 
 import XCTest
+@testable import FetchRecipesApp
 
-final class NetworkManager: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class NetworkManager_Tests: XCTestCase {
+    
+    private var networkManager: NetworkManager!
+    private var expectation: XCTestExpectation!
+    
+    override func setUp() {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession.init(configuration: configuration)
+        
+        networkManager = NetworkManager()
+        expectation = expectation(description: "Expectation")
     }
+    
+    func getEmptyRecipesSuccessfulResponse() async {
+        let jsonString = networkManager.readJSONFile(forName: "recipiesEmpty")
+        let data = jsonString.data(using: .utf8)
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+        MockURLProtocol.loadingHandler = { request in
+            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        do {
+            let recipes = try await networkManager.getData(with: NetworkManager.Constants.URL.APIEmptyPath)
+            XCTAssertTrue(recipes.isEmpty)
+            self.expectation.fulfill()
+        } catch {
+            XCTFail("Unexpected error: \(error)")
         }
     }
+    
+    func getRecipesSuccessfulResponse() async {
+        let jsonString = networkManager.readJSONFile(forName: "recipies")
+        let data = jsonString.data(using: .utf8)
 
+        MockURLProtocol.loadingHandler = { request in
+            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
+
+        do {
+            let recipes = try await networkManager.getData(with: NetworkManager.Constants.URL.APIHappyPath)
+            XCTAssertTrue(!recipes.isEmpty)
+            
+            let newJSONString = networkManager.json(from: recipes)
+            XCTAssertEqual(jsonString, newJSONString)
+            
+            self.expectation.fulfill()
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 }

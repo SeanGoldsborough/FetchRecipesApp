@@ -21,9 +21,6 @@ final class ImageCacheManager: ObservableObject {
         
         if let imageData = cache.object(forkey: imgUrl as NSString) {
             self.currentState = .success(data: imageData)
-//            #if DEBUG
-//            print("📱 Fetching image from the cache: \(imgUrl)")
-//            #endif
             return
         }
         
@@ -32,9 +29,6 @@ final class ImageCacheManager: ObservableObject {
             self.currentState = .success(data: data)
             cache.set(object: data as NSData,
                       forKey: imgUrl as NSString)
-//            #if DEBUG
-//            print("📱 Caching image: \(imgUrl)")
-//            #endif
         } catch {
             self.currentState = .failed(error: error)
         }

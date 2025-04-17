@@ -47,4 +47,25 @@ extension NetworkManager {
         }
         return nil
     }
+    
+    func readJSONFile(forName name: String) -> String {
+       do {
+          if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
+             let jsonString = try? String(contentsOfFile: bundlePath) {
+              print("JSONSTRING: \(jsonString)")
+              return jsonString
+          }
+       } catch {
+          print(error)
+           return ""
+       }
+        return ""
+    }
+    
+    func json(from object:Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
+            return nil
+        }
+        return String(data: data, encoding: String.Encoding.utf8)
+    }
 }

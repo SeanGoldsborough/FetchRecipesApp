@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeCellView: View {
     var name: String
     var image: String
+    var cuisine: String
     var body: some View {
         VStack {
             HStack {
@@ -41,11 +42,26 @@ struct RecipeCellView: View {
                     }
                     
                 }
-                                
-                Text(name)
-                    .font(.headline)
-                    .fontDesign(.serif)
-                    .padding(.leading, 8)
+                   
+                VStack {
+                    
+                    Spacer()
+                    
+                    Text(name)
+                        .font(.headline)
+                        .fontDesign(.serif)
+                        .padding(.leading, 8)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        Text(cuisine)
+                            .font(.footnote)
+                            .fontDesign(.serif)
+                            .padding(.leading)
+                    }
+                }
                 
                 Spacer()
             }

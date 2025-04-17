@@ -52,7 +52,6 @@ extension NetworkManager {
        do {
           if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
              let jsonString = try? String(contentsOfFile: bundlePath) {
-              print("JSONSTRING: \(jsonString)")
               return jsonString
           }
        } catch {

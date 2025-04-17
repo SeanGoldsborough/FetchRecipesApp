@@ -18,8 +18,7 @@ class ImageCache {
     lazy var cache: CacheType = {
         let cache = CacheType()
         cache.countLimit = 100
-        cache.totalCostLimit = 50 * 1024 * 1024 // 52428800 Bytes > 50MB
-        print("cache: \(cache.description)")
+        cache.totalCostLimit = 50 * 1024 * 1024
         return cache
     }()
     

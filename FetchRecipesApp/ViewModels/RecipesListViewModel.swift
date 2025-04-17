@@ -70,6 +70,10 @@ class RecipesListViewModel: ObservableObject {
             })
             .store(in: &store)
     }
+    
+    func reload() async {
+        self.loadData(url: NetworkManager.Constants.URL.APIHappyPath)
+    }
 }
 
 extension RecipesListViewModel {

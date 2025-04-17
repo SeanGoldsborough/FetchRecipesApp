@@ -64,6 +64,9 @@ struct RecipesListView: View {
                 .background(.gray.opacity(0.2))
                 .scrollContentBackground(.hidden)
                 .listRowSpacing(8.0)
+                .refreshable {
+                    await recipesListViewModel.reload()
+                }
                 .alert("Error: " + CustomError.invalidResponse.rawValue, isPresented: $recipesListViewModel.showError) {
                     Button("Retry", role: .cancel) {
                         recipesListViewModel.loadData(url: NetworkManager.Constants.URL.APIHappyPath)

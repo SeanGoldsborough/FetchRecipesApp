@@ -43,27 +43,11 @@ struct RecipeCellView: View {
                     
                 }
                    
-                VStack {
-                    
-                    Spacer()
-                    
-                    Text(name)
-                        .font(.headline)
+                VStack(spacing: 16) {
+                    Text(name + "\n\n" + cuisine)
+                        .font(.subheadline)
                         .fontDesign(.serif)
-                        .padding(.leading, 8)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        Text(cuisine)
-                            .font(.footnote)
-                            .fontDesign(.serif)
-                            .padding(.leading)
-                    }
                 }
-                
-                Spacer()
             }
         }
         .padding(0)

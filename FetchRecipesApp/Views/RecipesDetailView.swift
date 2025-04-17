@@ -20,6 +20,6 @@ struct RecipesDetailView: View {
                 .padding(.horizontal)
             
         })
-        .background(.yellow.opacity(0.5))
+        .background(.gray.opacity(0.2))
     }
 }

@@ -73,15 +73,16 @@ struct RecipesCardView: View {
                 }.border(.white, width: 1)
                 
                 ZStack {
-                    Rectangle().fill(.black.opacity(0.5))
+                    Rectangle().fill(.black.opacity(0.2))
                         .frame(width: geometry.size.width, height: 64)
+                        .border(.white, width: 1)
                     HStack {
                         Button("Read Recipe") {
                             if let url = URL(string: recipe.source_url ?? "") {
                                 openURL(url)
                             }
                         }
-                        .frame(width: 172, height: 48)
+                        .frame(width: 164, height: 48)
                         .background(.white)
                         .cornerRadius(8)
                         .font(.title3)
@@ -100,7 +101,7 @@ struct RecipesCardView: View {
                                         .padding(0)
                                         .frame(width: 100, height: 48)
                                 }
-                                .frame(width: 172, height: 48)
+                                .frame(width: 164, height: 48)
                                 .background(.white)
                                 .cornerRadius(8)
                                 .font(.headline)
@@ -115,7 +116,6 @@ struct RecipesCardView: View {
                 Spacer()
             }
             .padding(.trailing, 32.0)
-            
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: backButton)
         }

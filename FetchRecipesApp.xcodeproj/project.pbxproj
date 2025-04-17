@@ -180,11 +180,11 @@
 		415AA3CD2DAD987400C4824F /* FetchRecipesAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				415AA3CE2DAD987400C4824F /* FetchRecipesAppTests.swift */,
 				41131B972DB133AA00232332 /* NetworkManagerTests.swift */,
 				41131B992DB133D000232332 /* ImageCacheManagerTests.swift */,
 				41131B9B2DB1342900232332 /* ImageFetcherTests.swift */,
 				41131B9D2DB1AEEC00232332 /* MockURLProtocol.swift */,
+				415AA3CE2DAD987400C4824F /* FetchRecipesAppTests.swift */,
 			);
 			path = FetchRecipesAppTests;
 			sourceTree = "<group>";

@@ -56,12 +56,12 @@ struct RecipesListView: View {
                         NavigationLink(destination: RecipesDetailView(recipe: recipe)) {
                             RecipeCellView(name: recipe.name ?? "",
                                            image: recipe.photo_url_small ?? "",
-                                           cuisine: ("Origin: \(recipe.cuisine?.cuisineFlag(cuisineName: recipe.cuisine) ?? "") " + "\(recipe.cuisine ?? "")"))
+                                           cuisine: ("\(recipe.cuisine?.cuisineFlag(cuisineName: recipe.cuisine) ?? "") " + "\(recipe.cuisine ?? "")"))
                             .padding(0)
                         }
                     }
                 }
-                .background(.yellow.opacity(0.5))
+                .background(.gray.opacity(0.2))
                 .scrollContentBackground(.hidden)
                 .listRowSpacing(8.0)
                 .alert("Error: " + CustomError.invalidResponse.rawValue, isPresented: $recipesListViewModel.showError) {

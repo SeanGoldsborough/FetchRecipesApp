@@ -12,7 +12,8 @@ Pull to Refresh with momentary signal loss then retry
 
 https://github.com/user-attachments/assets/a23ee512-7b06-4d90-80b2-fe74bc065bb9
 
-### Summary: An app that displays a collection of recipes from around the world.
+### Summary: 
+An app that displays a collection of recipes from around the world.
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas? 
 Imagine caching and async network calls to optimize app performance and network data usage.
